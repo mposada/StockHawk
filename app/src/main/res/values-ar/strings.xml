@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="http://schemas.android.com/tools">
+    <string name="app_name">الأسهم هوك</string>
+
+    <string name="action_example">العمل سبيل المثال</string>
+
+    <string name="action_settings">إعدادات</string>
+    <string name="action_change_units">وحدات التغيير</string>
+    <string name="symbol_search">رمز البحث</string>
+    <string name="content_test">بحث عن الأوراق المالية رمز</string>
+    <string name="input_hint">FB</string>
+    <string name="input_prefill"></string>
+    <string name="network_toast">اه اوه! هذا التطبيق يتطلب اتصال بالإنترنت</string>
+    <!-- Mine -->
+    <string name="add_new_stock">إضافة الأسهم الجديدة</string>
+    <string name="stock_already_saved">يتم حفظ هذه الأسهم بالفعل!</string>
+    <string name="symbol">رمز <xliff:g id="value">%1$s</xliff:g></string>
+    <string name="price">السعر <xliff:g id="value">%1$s</xliff:g></string>
+    <string name="percent">نسبه مئويه <xliff:g id="value">%1$s</xliff:g></string>
+</resources>

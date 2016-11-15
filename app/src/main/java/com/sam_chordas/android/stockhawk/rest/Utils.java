@@ -4,10 +4,19 @@ import android.content.ContentProviderOperation;
 import android.util.Log;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by sam_chordas on 10/8/15.
@@ -91,5 +100,37 @@ public class Utils {
       e.printStackTrace();
     }
     return builder.build();
+  }
+
+  public static String getCurrentDay(){
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date date = new Date();
+    return dateFormat.format(date);
+  }
+
+  public static String getMinusSevenDays(){
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    Date date = new Date();
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.add(Calendar.DATE, -8);
+    return dateFormat.format(calendar.getTime());
+  }
+
+  public static final String getDayName(String str_date) {
+    try {
+      SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+      Date date = format.parse(str_date);
+      Calendar c = Calendar.getInstance();
+      c.setTime(date);
+      int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+
+      String[] days = {"sun", "mon", "tue", "wed", "thu", "fri", "sat"};
+      String day = days[dayOfWeek - 1];
+      return day;
+    } catch (ParseException e) {
+      e.printStackTrace();
+      return "";
+    }
   }
 }
