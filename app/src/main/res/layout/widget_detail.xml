@@ -23,10 +23,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="@dimen/activity_padding"
-        android:background="@android:color/background_material_dark">
+        android:background="@android:color/background_dark">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+        <ListView
+            android:id="@+id/widget_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
