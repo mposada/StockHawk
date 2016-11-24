@@ -19,4 +19,5 @@
     <string name="percent">نسبه مئويه <xliff:g id="value">%1$s</xliff:g></string>
     <string name="empty_list">Sorry, there is no content</string>
     <string name="title_widget_detail">Widget Title</string>
+    <string name="not_found">No Stock Found!</string>
 </resources>

@@ -84,10 +84,10 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 views.setTextViewText(R.id.widget_change, change);
 
                 if (data.getInt(data.getColumnIndex("is_up")) == 1) {
-                    views.setInt(R.id.widget_change, "setBackgroundDrawable", R.drawable.percent_change_pill_green);
+                    views.setInt(R.id.widget_change, "setBackgroundResource", R.drawable.percent_change_pill_green);
                 }
                 else {
-                    views.setInt(R.id.widget_change, "setBackgroundDrawable", R.drawable.percent_change_pill_red);
+                    views.setInt(R.id.widget_change, "setBackgroundResource", R.drawable.percent_change_pill_red);
                 }
 
                 final Intent fillInIntent = new Intent();

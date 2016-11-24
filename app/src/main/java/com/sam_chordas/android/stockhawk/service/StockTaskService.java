@@ -5,11 +5,17 @@ import android.content.Context;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteConstraintException;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.google.android.gms.gcm.GcmNetworkManager;
 import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
+import com.sam_chordas.android.stockhawk.R;
 import com.sam_chordas.android.stockhawk.data.QuoteColumns;
 import com.sam_chordas.android.stockhawk.data.QuoteProvider;
 import com.sam_chordas.android.stockhawk.rest.Utils;
@@ -124,8 +130,18 @@ public class StockTaskService extends GcmTaskService{
           }
           mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
               Utils.quoteJsonToContentVals(getResponse));
-        }catch (RemoteException | OperationApplicationException e){
+        }catch (RemoteException | OperationApplicationException | SQLiteConstraintException e){
           Log.e(LOG_TAG, "Error applying batch insert", e);
+
+          Handler handler = new Handler(Looper.getMainLooper());
+          handler.post(new Runnable() {
+
+            @Override
+            public void run() {
+              Toast.makeText(mContext, R.string.not_found, Toast.LENGTH_LONG).show();
+            }
+          });
+
         }
       } catch (IOException e){
         e.printStackTrace();
