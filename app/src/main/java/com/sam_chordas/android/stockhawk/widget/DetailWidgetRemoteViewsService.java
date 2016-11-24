@@ -1,6 +1,5 @@
 package com.sam_chordas.android.stockhawk.widget;
 
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Binder;
@@ -80,15 +79,15 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
                 String bidPrice = data.getString(data.getColumnIndex("bid_price"));
                 String change = data.getString(data.getColumnIndex("change"));
 
-                views.setTextViewText(R.id.stock_symbol, stockSymbol);
-                views.setTextViewText(R.id.bid_price, bidPrice);
-                views.setTextViewText(R.id.change, change);
+                views.setTextViewText(R.id.widget_stock_symbol, stockSymbol);
+                views.setTextViewText(R.id.widget_bid_price, bidPrice);
+                views.setTextViewText(R.id.widget_change, change);
 
                 if (data.getInt(data.getColumnIndex("is_up")) == 1) {
-                    views.setInt(R.id.change, "setBackgroundDrawable", R.drawable.percent_change_pill_green);
+                    views.setInt(R.id.widget_change, "setBackgroundDrawable", R.drawable.percent_change_pill_green);
                 }
                 else {
-                    views.setInt(R.id.change, "setBackgroundDrawable", R.drawable.percent_change_pill_red);
+                    views.setInt(R.id.widget_change, "setBackgroundDrawable", R.drawable.percent_change_pill_red);
                 }
 
                 final Intent fillInIntent = new Intent();
