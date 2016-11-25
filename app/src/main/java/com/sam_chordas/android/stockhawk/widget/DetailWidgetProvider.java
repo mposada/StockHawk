@@ -41,9 +41,11 @@ public class DetailWidgetProvider extends AppWidgetProvider {
             }
 
             Intent clickIntentTemplate = new Intent(context, LineGraphActivity.class);
+
             PendingIntent clickPendingIntentTemplate = TaskStackBuilder.create(context)
                     .addNextIntentWithParentStack(clickIntentTemplate)
                     .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+
             views.setPendingIntentTemplate(R.id.widget_list, clickPendingIntentTemplate);
             views.setEmptyView(R.id.widget_list, R.id.widget_empty);
 
