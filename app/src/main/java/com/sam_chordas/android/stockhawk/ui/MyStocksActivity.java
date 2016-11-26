@@ -19,6 +19,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -55,10 +56,14 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
   private Context mContext;
   private Cursor mCursor;
   boolean isConnected;
+  private TextView mConnectivityStatusView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    // get the lb_connectivity_status TextView reference
+    mConnectivityStatusView = (TextView) findViewById(R.id.lb_connectivity_status);
 
     mContext = this;
     ConnectivityManager cm =
@@ -72,12 +77,14 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     // GCMTaskService can only schedule tasks, they cannot execute immediately
     mServiceIntent = new Intent(this, StockIntentService.class);
     if (savedInstanceState == null){
+      mConnectivityStatusView.setVisibility(View.GONE);
       // Run the initialize task service so that some stocks appear upon an empty database
       mServiceIntent.putExtra("tag", "init");
       if (isConnected){
         startService(mServiceIntent);
       } else{
         networkToast();
+        mConnectivityStatusView.setVisibility(View.VISIBLE);
       }
     }
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler_view);

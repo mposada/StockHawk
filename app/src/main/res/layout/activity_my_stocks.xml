@@ -12,6 +12,14 @@
       android:layout_height="match_parent"
       />
 
+  <TextView
+      android:id="@+id/lb_connectivity_status"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center_horizontal|center_vertical"
+      android:text="Sorry you are not connected to internet"
+      android:visibility="gone"/>
+
   <com.melnykov.fab.FloatingActionButton
       android:id="@+id/fab"
       android:layout_width="wrap_content"
